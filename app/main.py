@@ -10,7 +10,7 @@ from app.data import Database
 from app.graph import chart
 from app.machine import Machine
 
-SPRINT = 0
+SPRINT = 3
 APP = Flask(__name__)
 
 
@@ -97,4 +97,5 @@ def model():
 
 
 if __name__ == '__main__':
+    os.chdir("/Users/kendallames/PycharmProjects/BandersnatchStarter-1")
     APP.run()

@@ -45,4 +45,3 @@ def chart(df: DataFrame, x: str, y: str, target: str) -> Chart:
     )
 
     return graph
-

@@ -4,6 +4,7 @@ from certifi import where
 from dotenv import load_dotenv
 from MonsterLab import Monster
 from pandas import DataFrame
+import pandas as pd
 from pymongo import MongoClient
 
 
@@ -21,7 +22,6 @@ class Database:
         efficiency."""
 
         monster_list = []
-
         for x in range(1, amount+1):
             monster_list.append(Monster().to_dict())
         self.collection.insert_many(monster_list)
@@ -57,6 +57,11 @@ class Database:
 
         return self.collection.find(query, {"_id": False})
 
+    def save_csv(self) -> None:
+        self.dataframe().to_csv(
+            path_or_buf='/Users/kendallames/Desktop/monsters.csv'
+        )
+
 
 if __name__ == "__main__":
     db = Database()
@@ -64,3 +69,5 @@ if __name__ == "__main__":
     db.seed(1000)
     print(db.count())
     print(db.dataframe())
+    db.save_csv()
+
