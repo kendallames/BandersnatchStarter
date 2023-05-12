@@ -29,8 +29,7 @@ class Machine:
         model. Returns confidence as a float value"""
         prediction, *_ = self.model.predict(feature_basis)
         confidence, *_ = self.model.predict_proba(feature_basis)
-        confidence_float = float(confidence[0])
-        return prediction, confidence_float
+        return prediction, float(max(confidence))
 
     def save(self, filepath):
         """Save method uses the joblib dump function to save the self object at the filepath. Dump serializes the
